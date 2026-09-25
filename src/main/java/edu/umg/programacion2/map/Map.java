@@ -115,7 +115,7 @@ public class CitaFrame extends JFrame {
 
     private void cargarDatosTabla() {
         tableModel.setRowCount(0);
-        List<Cita> lista = citaDAO.listarTodos();
+        List<Cita> lista = citaDAO.listar();
         for (Cita c : lista) {
             tableModel.addRow(new Object[]{
                     c.getId(),
@@ -125,7 +125,7 @@ public class CitaFrame extends JFrame {
                     c.getServicio(),
                     c.getDuracionMinutos() + " min",
                     c.getEstado(),
-                    c.isconfirmacion() ? "Sí" : "No"
+                    c.getconfirmacion() ? "Sí" : "No"
             });
         }
     }
@@ -231,7 +231,7 @@ public class CitaFrame extends JFrame {
     }
 
     private void mostrarConteoPorServicio() {
-        List<Cita> lista = citaDAO.listarTodos();
+        List<Cita> lista = citaDAO.listar();
         if (lista.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No hay citas registradas para agrupar.");
             return;
