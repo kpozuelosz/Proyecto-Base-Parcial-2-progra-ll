@@ -62,7 +62,7 @@ public class CitaDAO {
     }
 
     public boolean agregar(Cita cita) {
-        String sql = "INSERT INTO citas (cliente, fecha, hora, servicio, duracion_minutos, estado, confirmacion) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    	String sql = "INSERT INTO citas (cliente, fecha, hora, servicio, duracion_minutos, estado, confirmacion) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = Conexion.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
