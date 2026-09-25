@@ -1,0 +1,49 @@
+[33mcommit bf31b51e5eda147a47b93d7e3f6325b7ae1ceb4a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author: Keiry <kpozuelosz@miumg.edu.gt>
+Date:   Wed Sep 23 22:40:53 2026 -0600
+
+    Capa de presentacion: Main.java con validaciones y CLI
+    
+    14. Validacion en Main.java para restriccion de campos no vacios y limite de 35 caracteres.
+    
+    15. Validacion de fecha y hora futura (LocalDateTime.isBefore(LocalDateTime.now())).
+    
+    16. Validacion de duracion estimada mayor a 0 minutos.
+    
+    17. Selector con opciones fijas (1: pendiente, 2: confirmada, 3: cancelada) para compatibilidad con el ENUM de MySQL.
+    
+    18. Confirmacion previa (s/n) antes de aplicar el borrado fisico de una cita.
+    
+    19. Metodo auxiliar para capitalizar estados al desplegar en pantalla.
+
+[33mcommit 32a995a6797cc9b7297136436d069e36cb0ac2b9[m
+Author: Keiry <kpozuelosz@miumg.edu.gt>
+Date:   Wed Sep 23 22:40:42 2026 -0600
+
+    Capa de datos: schema.sql, modelo Cita, Conexion y CitaDAO
+    
+    1. Creacion de la base de datos y tabla citas con fecha (DATE), hora (TIME), ENUM y VARCHAR(35) en sql/schema.sql.
+    
+    2. Creacion del modelo Cita.java con atributos y constructor.
+    
+    3. Getters/setters para cliente, fecha y hora.
+    
+    4. Getters/setters para servicio, duracionMinutos y estado.
+    
+    5. Creacion de la clase de conexion JDBC Conexion.java.
+    
+    6. Configuracion de parametros de conexion a MySQL.
+    
+    7. Creacion de CitaDAO.java con metodo listar().
+    
+    8. Mapeo de columnas SQL (DATE, TIME, ENUM) a tipos Java (LocalDate, LocalTime, String) en listar().
+    
+    9. Metodo obtenerPorId(int id) en CitaDAO.
+    
+    10. Metodo agregar(Cita cita) con PreparedStatement.
+    
+    11. Implementacion de validacion de insercion en BD.
+    
+    12. Manejo de excepciones SQLException en operaciones de lectura y guardado.
+    
+    13. Configuracion de pom.xml con dependencia del driver JDBC.

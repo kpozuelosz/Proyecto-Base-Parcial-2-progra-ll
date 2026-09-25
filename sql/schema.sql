@@ -9,4 +9,5 @@ CREATE TABLE citas (
     servicio VARCHAR(35) NOT NULL,
     duracion_minutos INT NOT NULL,
     estado ENUM('pendiente', 'confirmada', 'cancelada') NOT NULL DEFAULT 'pendiente'
+    confirmacion BOOLEAN NOT NULL DEFAULT FALSE 
 );

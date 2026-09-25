@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) {
         int opcion;
         do {
-            System.out.println("\n=== AGENDA DE CITAS ===");
+            System.out.println("AGENDA DE CITAS");
             System.out.println("1. Ver listado de citas");
             System.out.println("2. Agendar nueva cita");
             System.out.println("3. Editar cita existente");
@@ -43,7 +43,7 @@ public class Main {
 
     private static void listarCitas() {
         List<Cita> citas = citaDAO.listar();
-        System.out.println("\nListado:");
+        System.out.println("Listado:");
         if (citas.isEmpty()) {
             System.out.println("No hay citas registradas.");
             return;
@@ -61,7 +61,7 @@ public class Main {
     }
 
     private static void agendarCita() {
-        System.out.println("\n--- Nueva Cita ---");
+        System.out.println("Nueva Cita");
 
         String cliente = solicitarTexto("Cliente (máx 35 chars): ");
         LocalDate fecha = solicitarFecha();
@@ -84,7 +84,7 @@ public class Main {
     }
 
     private static void editarCita() {
-        System.out.println("\n--- Editar Cita ---");
+        System.out.println("Editar Cita");
         System.out.print("Ingrese el ID de la cita a editar: ");
         int id;
         try {
@@ -128,7 +128,7 @@ public class Main {
     }
 
     private static void eliminarCita() {
-        System.out.println("\n--- Eliminar Cita ---");
+        System.out.println("Eliminar Cita");
         System.out.print("Ingrese el ID de la cita a eliminar: ");
         int id;
         try {

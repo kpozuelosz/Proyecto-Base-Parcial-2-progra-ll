@@ -10,7 +10,7 @@ public class CitaDAO {
 
     public List<Cita> listar() {
         List<Cita> citas = new ArrayList<>();
-        String sql = "SELECT id, cliente, fecha, hora, servicio, duracion_minutos, estado FROM citas";
+        String sql = "SELECT id, cliente, fecha, hora, servicio, duracion_minutos, estado, confirmacion FROM citas";
 
         try (Connection conn = Conexion.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
@@ -24,7 +24,8 @@ public class CitaDAO {
                     rs.getTime("hora").toLocalTime(),
                     rs.getString("servicio"),
                     rs.getInt("duracion_minutos"),
-                    rs.getString("estado")
+                    rs.getString("estado"),
+                    rs.getBoolean("confirmacion")
                 );
                 citas.add(cita);
             }
@@ -35,7 +36,7 @@ public class CitaDAO {
     }
 
     public Cita obtenerPorId(int id) {
-        String sql = "SELECT id, cliente, fecha, hora, servicio, duracion_minutos, estado FROM citas WHERE id = ?";
+        String sql = "SELECT id, cliente, fecha, hora, servicio, duracion_minutos, estado, confirmacion FROM citas WHERE id = ?";
         try (Connection conn = Conexion.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -49,7 +50,8 @@ public class CitaDAO {
                         rs.getTime("hora").toLocalTime(),
                         rs.getString("servicio"),
                         rs.getInt("duracion_minutos"),
-                        rs.getString("estado")
+                        rs.getString("estado"),
+                        rs.getBoolean("confirmacion")
                     );
                 }
             }
@@ -60,7 +62,7 @@ public class CitaDAO {
     }
 
     public boolean agregar(Cita cita) {
-        String sql = "INSERT INTO citas (cliente, fecha, hora, servicio, duracion_minutos, estado) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO citas (cliente, fecha, hora, servicio, duracion_minutos, estado, confirmacion) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = Conexion.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -70,6 +72,7 @@ public class CitaDAO {
             ps.setString(4, cita.getServicio());
             ps.setInt(5, cita.getDuracionMinutos());
             ps.setString(6, cita.getEstado());
+            ps.setBoolean(7, cita.getconfirmacion());
 
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
@@ -79,7 +82,7 @@ public class CitaDAO {
     }
 
     public boolean actualizar(Cita cita) {
-        String sql = "UPDATE citas SET cliente = ?, fecha = ?, hora = ?, servicio = ?, duracion_minutos = ?, estado = ? WHERE id = ?";
+        String sql = "UPDATE citas SET cliente = ?, fecha = ?, hora = ?, servicio = ?, duracion_minutos = ?, estado = ?, confirmacion = ? WHERE id = ?";
         try (Connection conn = Conexion.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -89,7 +92,8 @@ public class CitaDAO {
             ps.setString(4, cita.getServicio());
             ps.setInt(5, cita.getDuracionMinutos());
             ps.setString(6, cita.getEstado());
-            ps.setInt(7, cita.getId());
+            ps.setBoolean(7, cita.getconfirmacion());
+            ps.setInt(8, cita.getId());
 
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {

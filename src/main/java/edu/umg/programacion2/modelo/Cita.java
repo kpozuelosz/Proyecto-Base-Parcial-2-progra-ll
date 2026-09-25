@@ -10,10 +10,11 @@ public class Cita {
     private String servicio;
     private int duracionMinutos;
     private String estado; 
+    private boolean confirmacion;
 
     public Cita() {}
 
-    public Cita(int id, String cliente, LocalDate fecha, LocalTime hora, String servicio, int duracionMinutos, String estado) {
+    public Cita(int id, String cliente, LocalDate fecha, LocalTime hora, String servicio, int duracionMinutos, String estado, boolean confirmacion) {
         this.id = id;
         this.cliente = cliente;
         this.fecha = fecha;
@@ -21,6 +22,7 @@ public class Cita {
         this.servicio = servicio;
         this.duracionMinutos = duracionMinutos;
         this.estado = estado;
+        this.confirmacion = confirmacion;
     }
 
     public int getId() { return id; }
@@ -43,4 +45,7 @@ public class Cita {
 
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }
+    
+    public boolean getconfirmacion() { return confirmacion; }
+    public void setconfirmacion(boolean confirmacion) { this.confirmacion = confirmacion; }
 }
